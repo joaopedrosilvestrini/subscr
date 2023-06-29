@@ -37,7 +37,7 @@ export default function Home() {
         </div>
         <div className="w-full md:w-1/2 lg:pl-12 flex justify-center items-center md:items-start flex-col text-center md:text-left">
           <h1 className="text-primary-light font-bold m-0 my-6 md:mt-0 p-0 pb-1 shadow select-none text-3xl md:text-5xl" style={{ background: "linear-gradient(0deg, rgba(236,236,236,1) 0%, rgba(202,200,217,1) 100%)", backgroundSize: "100%", backgroundClip: "text", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>About me</h1>
-          <h3 className="text-zinc-400 text-center shadow md:text-left md:text-xl m-0 md:mr-3 p-0">Hello everyone, my name is subscriptado. I've been making bots for discord for over 2 years and I'm starting my path on the front-end, using nextjs and tailwind css</h3>
+          <h3 className="text-zinc-400 text-center shadow md:text-left md:text-xl m-0 md:mr-3 p-0">Hello everyone, my name is subscriptado. I&apos;ve been making bots for discord for over 2 years and I&apos;m starting my path on the front-end, using nextjs and tailwind css</h3>
         </div>
       </section>
       <section className="mt-10"></section>
