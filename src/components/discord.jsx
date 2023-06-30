@@ -118,7 +118,6 @@ class LanyardClient {
                   data.d.activities.length > 0 &&
                   data.d.activities[0].details
                     .toLowerCase()
-                    .includes("sleeping")
                 ) {
                   this.data = {
                     spotify: false,
