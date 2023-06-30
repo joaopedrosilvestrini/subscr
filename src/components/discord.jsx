@@ -117,7 +117,6 @@ class LanyardClient {
                 if (
                   data.d.activities.length > 0 &&
                   data.d.activities[0].details
-                    .toLowerCase()
                 ) {
                   this.data = {
                     spotify: false,
