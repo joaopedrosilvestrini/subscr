@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Loading from "./loading";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 // Console personalization
 const cons1 = "background-color:rgb(219,39,119);color:#fff;padding:3px;";
@@ -238,16 +239,8 @@ export default function Discord() {
 
   useEffect(() => {
     const getActivity = () => {
-        const userTime = new Date();
-        const gmt7Time = new Date(userTime.toLocaleString('pt-br', { timeZone: 'America/Sao_Paulo' }));
-        const formatedTime = gmt7Time.toLocaleString('pt-br', {
-          hour: 'numeric',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: true
-        });
       if (!wsClient.data.spotify) {
-        setActivity((activity) => ({ ...wsClient.data }));
+        setActivity(() => ({ ...wsClient.data }));
       } else {
         setActivity(wsClient.data);
       }
@@ -265,7 +258,12 @@ export default function Discord() {
   return (
     <div className="flex justify-center items-center flex-row md:flex-col xl:flex-row mb-12 md:mb-0">
       {activity.image ? (
-        <div className="rounded-2xl w-20 md:w-32 h-20 md:h-32 md:mb-5 xl:mb-0 mr-4 md:mr-0 xl:mr-8 shadow-lg relative">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 5 }}
+          className="rounded-2xl w-20 md:w-32 h-20 md:h-32 md:mb-5 xl:mb-0 mr-4 md:mr-0 xl:mr-8 shadow-lg relative"
+        >
           <Image
             src={activity.image}
             alt={"My Image Profile"}
@@ -273,13 +271,18 @@ export default function Discord() {
             className="relative"
             style={{ borderRadius: "16px" }}
           />
-        </div>
+        </motion.div>
       ) : (
         <div className="rounded-2xl w-20 md:w-32 h-20 md:h-32 md:mb-5 xl:mb-0 mr-4 md:mr-0 xl:mr-8">
           <Loading className="h-full rounded-2xl" />
         </div>
       )}
-      <div className="flex justify-center items-start md:items-center xl:items-start flex-col text-left md:text-center xl:text-left">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 5 }}
+        className="flex justify-center items-start md:items-center xl:items-start flex-col text-left md:text-center xl:text-left"
+      >
         {activity.spotify && (
           <p className="text-secondary-light text-sm md:text-base m-0 mb-1 p-0 flex justify-start items-center">
             <i className="fa-brands fa-spotify text-[#1DB954] text-lg m-0 p-0 mr-1.5" />
@@ -295,9 +298,14 @@ export default function Discord() {
               {activity.title}
             </Link>
           ) : (
-            <h1 className="text-lg md:text-3xl tracking-tight font-bold m-0 p-0">
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 5 }}
+              className="text-lg md:text-3xl tracking-tight font-bold m-0 p-0"
+            >
               {activity.title}
-            </h1>
+            </motion.h1>
           )
         ) : (
           <div className="w-32 md:w-40 h-6 md:h-8 mb-1">
@@ -313,7 +321,7 @@ export default function Discord() {
             <Loading className="w-full h-full" />
           </div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 }

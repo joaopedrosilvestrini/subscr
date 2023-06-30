@@ -1,5 +1,9 @@
 import Discord from "@/components/discord";
 import Head from "next/head";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Tooltip } from "react-tooltip";
 
 export default function Home() {
   return (
@@ -16,12 +20,64 @@ export default function Home() {
             <section className="mt-20">
               <div className="flex items-center justify-center text-center w-full">
                 <div className="flex flex-col">
-                  <h1 className="text-transparent text-5xl text-center font-bold leading-[3.5rem] bg-clip-text bg-gradient-to-b from-zinc-400 to-white">
-                    Hi there, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-b from-amber-800 to-amber-500">subsc</span>
-                  </h1>
-                  <h3 className="text-zinc-400 transition-all duration-200 mt-3">
+                  <motion.h1
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 100 }}
+                    className="text-transparent text-4xl sm:text-6xl md:text-8xl text-center font-bold leading-[3.5rem] bg-clip-text bg-gradient-to-b from-zinc-400 to-white"
+                  >
+                    Hi there, I&apos;m{" "}
+                    <span className="transition-all text-transparent bg-clip-text bg-gradient-to-b from-amber-800 to-amber-500">
+                      subsc
+                    </span>
+                  </motion.h1>
+                  <motion.h3
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 5 }}
+                    className="text-zinc-400 transition-all duration-200 mt-3 text-base font-medium sm:text-lg"
+                  >
                     FrontEnd Developer. My name is subscrip, i live in Brazil
-                  </h3>
+                  </motion.h3>
+                  <div
+                    className="flex justify-center items-start flex-row text-2xl mt-4"
+                  >
+                    <Link href="https://github.com/subscrip_">
+                      <motion.div
+                      className="mr-1 py-2 px-2.5 bg-transparent text-secondary-light shadow rounded transition-all duration-300 cursor-pointer hover:bg-btnhover hover:text-primary-light"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0 }}
+                        data-tooltip-id="tippy"
+                        data-tooltip-content="@subscrip_"
+                      >
+                        <i className="fa-brands fa-github" />
+                      </motion.div>
+                    </Link>
+                    <Link href="https://discord.com/users/1053131637187149905">
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.2 }}
+                        className="mx-1 py-2 px-2.5 bg-transparent text-secondary-light shadow rounded transition-all duration-300 cursor-pointer hover:bg-btnhover hover:text-primary-light"
+                        data-tooltip-id="tippy"
+                        data-tooltip-content="@subscrr"
+                      >
+                        <i className="fa-brands fa-discord" />
+                      </motion.div>
+                    </Link>
+                    <Link href="mailto:contact@subscriptado.com">
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1, delay: 0.4 }}
+                        className="ml-1 py-2 px-2.5 bg-transparent text-secondary-light shadow rounded transition-all duration-300 cursor-pointer hover:bg-btnhover hover:text-primary-light"
+                        data-tooltip-id="tippy"
+                        data-tooltip-content="contact@subscriptado.com"
+                      >
+                        <i className="fa-solid fa-envelope" />
+                      </motion.div>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </section>
@@ -36,11 +92,20 @@ export default function Home() {
           <Discord />
         </div>
         <div className="w-full md:w-1/2 lg:pl-12 flex justify-center items-center md:items-start flex-col text-center md:text-left">
-          <h1 className="text-primary-light font-bold m-0 my-6 md:mt-0 p-0 pb-1 shadow select-none text-3xl md:text-5xl" style={{ background: "linear-gradient(0deg, rgba(236,236,236,1) 0%, rgba(202,200,217,1) 100%)", backgroundSize: "100%", backgroundClip: "text", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>About me</h1>
-          <h3 className="text-zinc-400 text-center shadow md:text-left md:text-xl m-0 md:mr-3 p-0">Hello everyone, my name is subscriptado. I&apos;ve been making bots for discord for over 2 years and I&apos;m starting my path on the front-end, using nextjs and tailwind css</h3>
+          <motion.h3
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 5 }}
+            className="text-zinc-400 text-center shadow md:text-left md:text-xl m-0 md:mr-3 p-0 text-base font-medium sm:text-lg"
+          >
+            Hello everyone, my name is subscriptado. I&apos;ve been making bots
+            for discord for over 2 years and I&apos;m starting my path on the
+            front-end, using nextjs and tailwind css
+          </motion.h3>
         </div>
       </section>
       <section className="mt-10"></section>
+      <Tooltip id="tippy" className="z-[10] transition-all" style={{ backgroundColor: "#383c4d" }} />
     </>
   );
 }
